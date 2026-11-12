@@ -22,6 +22,10 @@ export default async function WorkPage({
   const { slug } = await params;
   const item = getWorkBySlug(slug);
   if (!item) notFound();
+  const currentIndex = allWork.findIndex((work) => work.slug === slug);
+  const previous = currentIndex > 0 ? allWork[currentIndex - 1] : undefined;
+  const next =
+    currentIndex < allWork.length - 1 ? allWork[currentIndex + 1] : undefined;
   return (
     <main id="main" className="work-detail shell">
       <Link className="back-link" href="/#work">
@@ -86,6 +90,27 @@ export default async function WorkPage({
           ))}
         </aside>
       </div>
+      <nav className="project-pagination" aria-label="Project navigation">
+        {previous ? (
+          <Link href={`/work/${previous.slug}/`}>
+            <span>Previous project</span>
+            {previous.title}
+          </Link>
+        ) : (
+          <span />
+        )}
+        {next ? (
+          <Link href={`/work/${next.slug}/`}>
+            <span>Next project</span>
+            {next.title}
+          </Link>
+        ) : (
+          <Link href="/#work">
+            <span>Back to</span>
+            All projects
+          </Link>
+        )}
+      </nav>
     </main>
   );
 }

@@ -156,7 +156,7 @@ export const professionalWork: WorkStory[] = [
 export const publicProjects: PublicProject[] = [
   {
     slug: "career-tracker",
-    eyebrow: "Public build · Featured",
+    eyebrow: "Personal project",
     title: "Career Tracker",
     summary:
       "A focused 12-week job-search and interview-preparation tracker that works without an account or backend.",
@@ -200,51 +200,13 @@ export const publicProjects: PublicProject[] = [
     ],
   },
   {
-    slug: "giant-pennies",
-    eyebrow: "Earlier work",
-    title: "Giant Pennies",
-    summary:
-      "An earlier React application exploring authentication flows, dashboard navigation, and Tailwind CSS.",
-    context: "Retained as an honest snapshot of earlier frontend work.",
-    challenge:
-      "Build a multi-route React interface and deploy it as a working application.",
-    approach: [
-      "Built with React and JavaScript.",
-      "Styled with Tailwind CSS.",
-      "Deployed to Vercel.",
-    ],
-    outcome:
-      "A working public demo and source repository remain available for historical context.",
-    skills: ["React", "JavaScript", "Tailwind CSS"],
-    evidence: [
-      {
-        label: "Public artifact",
-        detail: "Source and live deployment are public.",
-        kind: "public-artifact",
-      },
-    ],
-    repository: "https://github.com/nora-rasuli/giant-pennies",
-    status: "earlier-work",
-    links: [
-      {
-        label: "View source",
-        href: "https://github.com/nora-rasuli/giant-pennies",
-        kind: "source",
-      },
-      {
-        label: "Open demo",
-        href: "https://giant-pennies.vercel.app/login",
-        kind: "demo",
-      },
-    ],
-  },
-  {
     slug: "nutrifood",
-    eyebrow: "Earlier work",
+    eyebrow: "Personal project",
     title: "NutriFood",
     summary:
-      "An earlier meal-planning application integrating recipe data with calorie and meal-plan workflows.",
-    context: "Retained as an honest snapshot of earlier API and product work.",
+      "A meal-planning application integrating recipe data with calorie and meal-plan workflows.",
+    context:
+      "A personal exploration of API-driven meal planning and nutrition workflows.",
     challenge:
       "Connect user inputs, calculated nutrition needs, external recipe data, and saved meals.",
     approach: [
@@ -273,6 +235,45 @@ export const publicProjects: PublicProject[] = [
       {
         label: "Open demo",
         href: "https://nutrifood-v2.vercel.app",
+        kind: "demo",
+      },
+    ],
+  },
+  {
+    slug: "giant-pennies",
+    eyebrow: "Personal project",
+    title: "Giant Pennies",
+    summary:
+      "A React application exploring authentication flows, dashboard navigation, and Tailwind CSS.",
+    context:
+      "A personal exploration of multi-route application structure and dashboard interaction patterns.",
+    challenge:
+      "Build a multi-route React interface and deploy it as a working application.",
+    approach: [
+      "Built with React and JavaScript.",
+      "Styled with Tailwind CSS.",
+      "Deployed to Vercel.",
+    ],
+    outcome: "A working public demo and source repository are available.",
+    skills: ["React", "JavaScript", "Tailwind CSS"],
+    evidence: [
+      {
+        label: "Public artifact",
+        detail: "Source and live deployment are public.",
+        kind: "public-artifact",
+      },
+    ],
+    repository: "https://github.com/nora-rasuli/giant-pennies",
+    status: "earlier-work",
+    links: [
+      {
+        label: "View source",
+        href: "https://github.com/nora-rasuli/giant-pennies",
+        kind: "source",
+      },
+      {
+        label: "Open demo",
+        href: "https://giant-pennies.vercel.app/login",
         kind: "demo",
       },
     ],

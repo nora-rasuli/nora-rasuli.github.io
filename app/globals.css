@@ -445,6 +445,33 @@ h3 {
   background: color-mix(in srgb, var(--accent), transparent 90%);
   border-left: 3px solid var(--accent);
 }
+.project-pagination {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 7rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+.project-pagination a {
+  font:
+    500 clamp(1.4rem, 3vw, 2.3rem)/1.1 Georgia,
+    serif;
+  text-decoration: none;
+}
+.project-pagination a:last-child {
+  text-align: right;
+}
+.project-pagination span {
+  display: block;
+  margin-bottom: 0.6rem;
+  color: var(--muted);
+  font:
+    700 0.72rem/1.2 Arial,
+    sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
 .resume-page,
 .not-found {
   padding-top: 10rem;
