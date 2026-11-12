@@ -3,9 +3,9 @@ import { expect, test } from "@playwright/test";
 test("homepage communicates the portfolio story", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "complex systems",
+    "complicated products",
   );
-  await expect(page.getByRole("link", { name: "View résumé" })).toHaveAttribute(
+  await expect(page.getByRole("link", { name: "Résumé ↗" })).toHaveAttribute(
     "href",
     "/resume/",
   );
