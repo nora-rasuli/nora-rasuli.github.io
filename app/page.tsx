@@ -9,47 +9,34 @@ export default function HomePage() {
   return (
     <main id="main">
       <section className="hero shell" aria-labelledby="hero-title">
-        <p className="eyebrow">Frontend/UI Engineer · San Francisco Bay Area</p>
-        <h1 id="hero-title">
-          I build interfaces that make complex systems <em>understandable.</em>
-        </h1>
-        <p className="hero-copy">
-          Four-plus years shipping React, TypeScript, and Vue products—from
-          zero-to-one GenAI workflows to data-heavy geospatial tools—with
-          accessibility and performance built in.
-        </p>
-        <div className="hero-actions">
-          <a className="button primary" href="#work">
-            Explore selected work
-          </a>
-          <Link className="button secondary" href="/resume/">
-            View résumé
-          </Link>
+        <div className="hero-main">
+          <p className="eyebrow">Nora Rasuli · Frontend/UI Engineer</p>
+          <h1 id="hero-title">I make complicated products feel simple.</h1>
         </div>
-        <dl className="hero-proof">
-          <div>
-            <dt>4+</dt>
-            <dd>years building product UI</dd>
+        <div className="hero-aside">
+          <p>
+            I’m a Bay Area frontend engineer working where product design and
+            implementation overlap. Recently, that has meant AI review tools,
+            dense data, and the unglamorous edge cases that make software feel
+            finished.
+          </p>
+          <p className="availability">
+            Open to frontend and design-engineering roles.
+          </p>
+          <div className="hero-actions">
+            <a href="#work">See my work ↓</a>
+            <Link href="/resume/">Résumé ↗</Link>
           </div>
-          <div>
-            <dt>2</dt>
-            <dd>zero-to-one GenAI products</dd>
-          </div>
-          <div>
-            <dt>30%</dt>
-            <dd>measured load-time improvement</dd>
-          </div>
-        </dl>
+        </div>
       </section>
       <section className="section shell" id="work">
         <div className="section-heading">
           <div>
             <p className="eyebrow">Selected work</p>
-            <h2>Products shaped from ambiguity to production</h2>
+            <h2>A few things I’ve worked through</h2>
           </div>
           <p>
-            Verified scope and outcomes, with proprietary visuals and customer
-            details intentionally omitted.
+            Professional work, explained without confidential product screens.
           </p>
         </div>
         <div className="work-grid">
@@ -63,7 +50,7 @@ export default function HomePage() {
           <div className="section-heading">
             <div>
               <p className="eyebrow">Experience</p>
-              <h2>Engineering with product judgment</h2>
+              <h2>Where I’ve been</h2>
             </div>
           </div>
           <div className="timeline">
@@ -97,7 +84,7 @@ export default function HomePage() {
         <div className="section-heading">
           <div>
             <p className="eyebrow">Capabilities</p>
-            <h2>Craft, systems, and product delivery</h2>
+            <h2>What I work with</h2>
           </div>
         </div>
         <div className="skill-grid">
@@ -117,11 +104,10 @@ export default function HomePage() {
         <div className="section-heading">
           <div>
             <p className="eyebrow">Public builds</p>
-            <h2>Small products with inspectable decisions</h2>
+            <h2>Things I make in public</h2>
           </div>
           <p>
-            New flagship work will be added as it ships. Existing work is
-            presented with honest scope.
+            Experiments, useful tools, and concept products built outside work.
           </p>
         </div>
         <div className="public-grid">
@@ -147,19 +133,19 @@ export default function HomePage() {
       <section className="section about shell" id="about">
         <div>
           <p className="eyebrow">About</p>
-          <h2>A frontend engineer who likes the difficult middle</h2>
+          <h2>I care about the part after the mockup.</h2>
         </div>
         <div>
           <p>
-            I’m Nora Rasuli, a frontend/UI engineer based in the San Francisco
-            Bay Area. I’m drawn to products where the interface translates
-            complex models, dense data, or unfamiliar workflows into something
-            people can understand and trust.
+            I’m Nora, a frontend/UI engineer in the San Francisco Bay Area. I
+            like turning a promising design into the real thing: responsive,
+            keyboard-friendly, fast, and still coherent when the data gets
+            weird.
           </p>
           <p>
-            I work across product thinking, interaction design, component
-            architecture, accessibility, and performance—especially the states
-            between the mockup and the happy path.
+            I’m happiest on small product teams where I can ask why, sketch a
+            better interaction, build it, and stay around long enough to polish
+            it.
           </p>
         </div>
       </section>

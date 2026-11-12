@@ -503,3 +503,118 @@ h3 {
     animation-duration: 0.01ms !important;
   }
 }
+
+/* A quieter, more personal editorial layout. */
+.hero {
+  min-height: 680px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(280px, 0.45fr);
+  gap: clamp(3rem, 8vw, 9rem);
+  align-items: end;
+  padding-block: clamp(8rem, 15vw, 13rem) 6rem;
+  border-bottom: 1px solid var(--line);
+}
+.hero-main h1 {
+  max-width: 850px;
+  font-size: clamp(4rem, 9.5vw, 8.8rem);
+  line-height: 0.9;
+  letter-spacing: -0.07em;
+}
+.hero-aside {
+  padding-bottom: 0.7rem;
+  color: var(--muted);
+  font-size: 1.03rem;
+}
+.availability {
+  margin-top: 2rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--accent);
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+.hero-actions {
+  margin-top: 2rem;
+  gap: 1.4rem;
+}
+.hero-actions a {
+  color: var(--ink);
+  font-weight: 700;
+  text-underline-offset: 0.3rem;
+}
+.work-grid {
+  display: block;
+  border-top: 1px solid var(--line);
+}
+.work-card {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr) 52px;
+  gap: clamp(1rem, 4vw, 4rem);
+  align-items: start;
+  padding: 2.8rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  box-shadow: none;
+}
+.card-index {
+  margin: 0;
+  color: var(--muted);
+  font:
+    500 1rem/1.4 Arial,
+    sans-serif;
+}
+.work-card-copy {
+  max-width: 780px;
+}
+.work-card h3 {
+  margin: 0.15rem 0 0.8rem;
+  font:
+    500 clamp(2rem, 4vw, 3.7rem)/1.02 Georgia,
+    serif;
+}
+.work-card-copy > p:not(.eyebrow, .work-tools) {
+  max-width: 650px;
+  color: var(--muted);
+}
+.work-tools {
+  margin-top: 1.4rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+}
+.work-arrow {
+  color: var(--accent);
+  font-size: 1.8rem;
+  text-decoration: none;
+}
+.skill-grid {
+  gap: 3rem;
+}
+.skill-grid article {
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--ink);
+  background: transparent;
+}
+.skill-grid li {
+  border: 0;
+}
+.public-grid {
+  max-width: none;
+}
+@media (max-width: 800px) {
+  .hero {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .hero-main h1 {
+    font-size: clamp(3.7rem, 16vw, 6rem);
+  }
+  .work-card {
+    min-height: 0;
+    grid-template-columns: 42px minmax(0, 1fr) 28px;
+    gap: 0.8rem;
+  }
+}
