@@ -398,6 +398,18 @@ h3 {
   color: var(--muted);
   font-size: 1.2rem;
 }
+.detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+.disclosure {
+  margin-top: 1.4rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--accent);
+  font-size: 0.9rem !important;
+}
 .detail-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 330px;
@@ -418,6 +430,15 @@ h3 {
 .story li {
   color: var(--muted);
 }
+.story blockquote {
+  margin: 1.5rem 0;
+  padding: 0 0 0 1.5rem;
+  border-left: 3px solid var(--accent);
+  color: var(--ink);
+  font:
+    500 clamp(1.35rem, 3vw, 2rem)/1.35 Georgia,
+    serif;
+}
 .story li {
   margin-bottom: 0.8rem;
 }
@@ -436,6 +457,55 @@ h3 {
 .evidence-panel div {
   padding-block: 1rem;
   border-top: 1px solid var(--line);
+}
+.project-facts dl {
+  margin: 0;
+}
+.project-facts dt {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.project-facts dd {
+  margin: 0.35rem 0 0;
+}
+.demo-steps {
+  padding: 0;
+  list-style: none;
+}
+.demo-steps li {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 1rem;
+  align-items: start;
+  padding: 1rem 0;
+  border-top: 1px solid var(--line);
+}
+.demo-steps li span {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--ink);
+  font-size: 0.75rem;
+}
+.decision-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.decision-list > div {
+  padding: 1.4rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.decision-list h3 {
+  margin-top: 0;
+  letter-spacing: -0.02em;
 }
 .evidence-panel p {
   color: var(--muted);
@@ -504,6 +574,9 @@ h3 {
   }
   .evidence-panel {
     position: static;
+  }
+  .decision-list {
+    grid-template-columns: 1fr;
   }
 }
 @media (max-width: 520px) {

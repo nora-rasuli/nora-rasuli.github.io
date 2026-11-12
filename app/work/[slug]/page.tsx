@@ -26,6 +26,8 @@ export default async function WorkPage({
   const previous = currentIndex > 0 ? allWork[currentIndex - 1] : undefined;
   const next =
     currentIndex < allWork.length - 1 ? allWork[currentIndex + 1] : undefined;
+  const demo = item.links?.find((link) => link.kind === "demo");
+  const source = item.links?.find((link) => link.kind === "source");
   return (
     <main id="main" className="work-detail shell">
       <Link className="back-link" href="/#work">
@@ -35,19 +37,49 @@ export default async function WorkPage({
         <p className="eyebrow">{item.eyebrow}</p>
         <h1>{item.title}</h1>
         <p>{item.summary}</p>
-        <ul className="tag-list" aria-label="Skills demonstrated">
-          {item.skills.map((skill) => (
-            <li key={skill}>{skill}</li>
-          ))}
-        </ul>
+        <div className="detail-actions">
+          {demo && (
+            <a className="button primary" href={demo.href}>
+              Open live demo ↗
+            </a>
+          )}
+          {source && (
+            <a className="button secondary" href={source.href}>
+              View GitHub ↗
+            </a>
+          )}
+        </div>
+        {item.disclosure && <p className="disclosure">{item.disclosure}</p>}
       </header>
       <div className="detail-layout">
         <article className="story">
+          {item.userStory && (
+            <section>
+              <p className="eyebrow">The user</p>
+              <h2>{item.user}</h2>
+              <blockquote>{item.userStory}</blockquote>
+              {item.scenario && <p>{item.scenario}</p>}
+            </section>
+          )}
           <section>
             <p className="eyebrow">Context</p>
             <h2>The product problem</h2>
             <p>{item.context}</p>
           </section>
+          {item.demoPath && (
+            <section>
+              <p className="eyebrow">Product walkthrough</p>
+              <h2>The shortest path to value</h2>
+              <ol className="demo-steps">
+                {item.demoPath.map((step, index) => (
+                  <li key={step}>
+                    <span aria-hidden="true">{index + 1}</span>
+                    {step}
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )}
           <section>
             <p className="eyebrow">Challenge</p>
             <h2>What made it difficult</h2>
@@ -55,13 +87,27 @@ export default async function WorkPage({
           </section>
           <section>
             <p className="eyebrow">Approach</p>
-            <h2>How I approached it</h2>
+            <h2>How I built it</h2>
             <ol>
               {item.approach.map((step) => (
                 <li key={step}>{step}</li>
               ))}
             </ol>
           </section>
+          {item.decisions && (
+            <section>
+              <p className="eyebrow">Product decisions</p>
+              <h2>What I chose—and why</h2>
+              <div className="decision-list">
+                {item.decisions.map((decision) => (
+                  <div key={decision.title}>
+                    <h3>{decision.title}</h3>
+                    <p>{decision.detail}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
           <section>
             <p className="eyebrow">Outcome</p>
             <h2>What changed</h2>
@@ -74,20 +120,26 @@ export default async function WorkPage({
             </aside>
           )}
         </article>
-        <aside className="evidence-panel">
-          <p className="eyebrow">Evidence</p>
-          <h2>What is verified</h2>
-          {item.evidence.map((proof) => (
-            <div key={proof.label}>
-              <h3>{proof.label}</h3>
-              <p>{proof.detail}</p>
+        <aside className="evidence-panel project-facts">
+          <p className="eyebrow">Project details</p>
+          <dl>
+            <div>
+              <dt>Type</dt>
+              <dd>{item.projectType ?? "Personal project"}</dd>
             </div>
-          ))}
-          {item.links?.map((link) => (
-            <a className="text-link" key={link.href} href={link.href}>
-              {link.label} ↗
-            </a>
-          ))}
+            <div>
+              <dt>Role</dt>
+              <dd>{item.role ?? "Frontend engineering"}</dd>
+            </div>
+            <div>
+              <dt>Timeline</dt>
+              <dd>{item.timeline ?? "Independent project"}</dd>
+            </div>
+            <div>
+              <dt>Built with</dt>
+              <dd>{item.skills.join(", ")}</dd>
+            </div>
+          </dl>
         </aside>
       </div>
       <nav className="project-pagination" aria-label="Project navigation">

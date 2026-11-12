@@ -23,6 +23,15 @@ export interface WorkStory {
   evidence: Evidence[];
   confidentialityNote?: string;
   links?: ExternalLink[];
+  projectType?: string;
+  role?: string;
+  timeline?: string;
+  user?: string;
+  userStory?: string;
+  scenario?: string;
+  demoPath?: string[];
+  decisions?: { title: string; detail: string }[];
+  disclosure?: string;
 }
 export interface PublicProject extends WorkStory {
   repository: string;
@@ -33,126 +42,6 @@ export interface SkillGroup {
   skills: string[];
 }
 
-export const professionalWork: WorkStory[] = [
-  {
-    slug: "knowledge-quality",
-    eyebrow: "Professional work · GenAI",
-    title: "Making AI knowledge quality explainable",
-    summary:
-      "A React and TypeScript interface that turns probabilistic quality signals into evidence content teams can review and act on.",
-    context:
-      "Enterprise knowledge teams need trustworthy content before agents and AI experiences can produce trustworthy answers.",
-    challenge:
-      "Duplicate and conflicting articles are not binary matches. The interface had to make embedding similarity, natural-language inference, and LLM verification understandable without overstating certainty.",
-    approach: [
-      "Structured model output into reviewable conflict evidence and confidence signals.",
-      "Designed workflows for knowledge-base-wide findings and per-article quality checks.",
-      "Built the product frontend in React and TypeScript as its first frontend engineer.",
-    ],
-    outcome:
-      "The workflow helped content managers identify quality issues that affect both human agents and AI-generated answers.",
-    skills: [
-      "React",
-      "TypeScript",
-      "AI UX",
-      "Complex state",
-      "Information design",
-    ],
-    evidence: [
-      {
-        label: "Ownership",
-        detail: "First frontend engineer on the product.",
-        kind: "verified-scope",
-      },
-      {
-        label: "Scope",
-        detail: "Knowledge-base analysis and per-article quality review.",
-        kind: "verified-scope",
-      },
-    ],
-    confidentialityNote:
-      "Product visuals and implementation details are omitted because this work is proprietary.",
-  },
-  {
-    slug: "knowledge-gap-discovery",
-    eyebrow: "Professional work · Zero to one",
-    title: "Turning support signals into a knowledge roadmap",
-    summary:
-      "A GenAI product that ranks customer questions, detects knowledge gaps, and supports review of AI-generated answers and articles.",
-    context:
-      "Support transcripts and failed searches contain valuable demand signals, but their volume makes it difficult to decide what to create next.",
-    challenge:
-      "The interface had to connect source signals, business value, gap detection, generation, and human review in one legible workflow.",
-    approach: [
-      "Translated the initial Figma prototype into a production React and TypeScript application.",
-      "Designed flows for question ranking, gap detection, instant-answer review, and article review.",
-      "Delivered the initial frontend independently while partnering across product and AI workstreams.",
-    ],
-    outcome:
-      "After a VP showcase, the company staffed a dedicated team; the product was adopted by three enterprise clients.",
-    skills: [
-      "React",
-      "TypeScript",
-      "Product ownership",
-      "AI review workflows",
-      "Figma",
-    ],
-    evidence: [
-      {
-        label: "Ownership",
-        detail: "Sole frontend engineer on the initial build.",
-        kind: "verified-scope",
-      },
-      {
-        label: "Adoption",
-        detail: "Adopted by three enterprise clients.",
-        kind: "verified-outcome",
-      },
-    ],
-    confidentialityNote:
-      "Product visuals, customer identities, and implementation details are omitted because this work is proprietary.",
-  },
-  {
-    slug: "geospatial-workspace",
-    eyebrow: "Professional work · Data-heavy UI",
-    title: "A faster workspace for complex map data",
-    summary:
-      "A Vue.js workspace that made civil and environmental map workflows more approachable for non-specialist teams.",
-    context:
-      "Large environmental and civil datasets need strong information hierarchy and responsive interaction, especially for non-GIS specialists.",
-    challenge:
-      "The platform needed a clearer workspace model, reusable interaction patterns, and better rendering behavior with large map datasets.",
-    approach: [
-      "Rebuilt the platform with a new toolbar and data-layer management.",
-      "Introduced reusable Vue component patterns and accessibility improvements.",
-      "Profiled and improved expensive rendering paths.",
-    ],
-    outcome:
-      "The performance work reduced load times by 30% and improved responsiveness on large map datasets.",
-    skills: [
-      "Vue.js",
-      "Geospatial UI",
-      "Performance",
-      "Accessibility",
-      "Component architecture",
-    ],
-    evidence: [
-      {
-        label: "Measured result",
-        detail: "30% reduction in load time.",
-        kind: "verified-outcome",
-      },
-      {
-        label: "Scope",
-        detail: "Toolbar, map layers, and reusable components.",
-        kind: "verified-scope",
-      },
-    ],
-    confidentialityNote:
-      "Client data, product visuals, and implementation details are omitted because this work is proprietary.",
-  },
-];
-
 export const publicProjects: PublicProject[] = [
   {
     slug: "career-tracker",
@@ -160,6 +49,31 @@ export const publicProjects: PublicProject[] = [
     title: "Career Tracker",
     summary:
       "A focused 12-week job-search and interview-preparation tracker that works without an account or backend.",
+    projectType: "Personal utility",
+    role: "Product design and frontend engineering",
+    timeline: "Independent project",
+    user: "A job seeker managing a long, multi-track search",
+    userStory:
+      "As a job seeker, I need one place to see what matters this week so that applications, interview preparation, and follow-ups do not disappear into separate notes.",
+    scenario:
+      "The search has entered week four. Applications are moving at different speeds, preparation tasks are scattered, and the user needs to decide what to do next without rebuilding a plan every morning.",
+    demoPath: [
+      "Choose a start date to generate the 12-week plan.",
+      "Mark this week’s work complete and review overall progress.",
+      "Export a backup, reset the tracker, and restore the saved state.",
+    ],
+    decisions: [
+      {
+        title: "Local-first instead of account-first",
+        detail:
+          "Browser storage removes onboarding friction and keeps personal job-search data off a server, while JSON export provides an explicit recovery path.",
+      },
+      {
+        title: "A weekly plan instead of another application database",
+        detail:
+          "The product emphasizes consistent action and interview preparation rather than duplicating a spreadsheet or applicant-tracking system.",
+      },
+    ],
     context:
       "Long job searches create fragmented tasks and make progress difficult to see.",
     challenge:
@@ -205,6 +119,33 @@ export const publicProjects: PublicProject[] = [
     title: "NutriFood",
     summary:
       "A meal-planning application integrating recipe data with calorie and meal-plan workflows.",
+    projectType: "Independent concept",
+    role: "Product design and frontend engineering",
+    timeline: "Personal project",
+    user: "A busy home cook planning meals around a daily calorie target",
+    userStory:
+      "As a home cook with limited planning time, I need recipes that fit my daily target so that I can assemble a realistic meal plan without calculating every ingredient manually.",
+    scenario:
+      "It is Sunday evening and the user needs a workable plan for the week. They know their nutrition target but do not want to compare recipes across multiple tabs and manually total each day.",
+    disclosure:
+      "Independent concept project using a fictional user scenario and external recipe data.",
+    demoPath: [
+      "Enter personal inputs to calculate a daily target.",
+      "Browse recipe options returned from the recipe API.",
+      "Save meals and assemble a plan around the target.",
+    ],
+    decisions: [
+      {
+        title: "Connect calculation to action",
+        detail:
+          "The nutrition estimate becomes useful only when it immediately shapes recipe discovery and meal selection.",
+      },
+      {
+        title: "Treat external data as unreliable",
+        detail:
+          "Recipe-driven interfaces need explicit loading, missing-data, and API-failure behavior because third-party results are incomplete by nature.",
+      },
+    ],
     context:
       "A personal exploration of API-driven meal planning and nutrition workflows.",
     challenge:
@@ -245,6 +186,33 @@ export const publicProjects: PublicProject[] = [
     title: "Giant Pennies",
     summary:
       "A React application exploring authentication flows, dashboard navigation, and Tailwind CSS.",
+    projectType: "Independent concept",
+    role: "Frontend engineering",
+    timeline: "Personal project",
+    user: "A member returning to a private financial dashboard",
+    userStory:
+      "As a returning member, I need to enter a protected workspace and understand its navigation quickly so that I can reach the account task I came to complete.",
+    scenario:
+      "The user arrives from a saved bookmark and must move from sign-in to a multi-section dashboard without losing confidence about where they are or what is protected.",
+    disclosure:
+      "Independent concept project using a fictional product and user scenario.",
+    demoPath: [
+      "Open the sign-in experience and review validation behavior.",
+      "Enter the protected dashboard shell.",
+      "Move between primary dashboard destinations at desktop and mobile widths.",
+    ],
+    decisions: [
+      {
+        title: "Make route structure visible",
+        detail:
+          "The project focuses on predictable navigation and clear page hierarchy rather than simulating a large financial data model.",
+      },
+      {
+        title: "Use a constrained component vocabulary",
+        detail:
+          "Repeated layout and interaction patterns keep a multi-route interface consistent while the project remains small.",
+      },
+    ],
     context:
       "A personal exploration of multi-route application structure and dashboard interaction patterns.",
     challenge:

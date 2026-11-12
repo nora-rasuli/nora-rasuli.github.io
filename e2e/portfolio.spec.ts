@@ -16,6 +16,13 @@ test("work and resume routes are usable", async ({ page }) => {
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
     "Career Tracker",
   );
+  await expect(
+    page.getByRole("link", { name: "Open live demo" }),
+  ).toBeVisible();
+  await expect(page.getByText("As a job seeker")).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "The shortest path to value" }),
+  ).toBeVisible();
   await page.goto("/resume/");
   await expect(
     page.getByRole("link", { name: "Download PDF" }),
