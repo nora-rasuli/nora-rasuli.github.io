@@ -583,6 +583,21 @@ h3 {
   font-size: 0.8rem;
   letter-spacing: 0.04em;
 }
+.work-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1.4rem;
+  margin-top: 1.8rem;
+}
+.work-actions a {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-underline-offset: 0.28rem;
+}
+.work-actions .demo-link {
+  color: var(--accent);
+}
 .work-arrow {
   color: var(--accent);
   font-size: 1.8rem;

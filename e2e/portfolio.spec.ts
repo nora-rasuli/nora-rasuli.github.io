@@ -9,6 +9,7 @@ test("homepage communicates the portfolio story", async ({ page }) => {
     "href",
     "/resume/",
   );
+  await expect(page.getByRole("link", { name: "Live demo" })).toHaveCount(3);
 });
 test("work and resume routes are usable", async ({ page }) => {
   await page.goto("/work/career-tracker/");

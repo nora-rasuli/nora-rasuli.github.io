@@ -188,6 +188,11 @@ export const publicProjects: PublicProject[] = [
     status: "featured",
     links: [
       {
+        label: "Open demo",
+        href: "https://nora-rasuli.github.io/career-tracker/",
+        kind: "demo",
+      },
+      {
         label: "View source",
         href: "https://github.com/nora-rasuli/career-tracker",
         kind: "source",
