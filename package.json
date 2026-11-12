@@ -1,32 +1,43 @@
 {
-  "name": "frontend-portfolio",
-  "version": "1.0.0",
-  "description": "A simple, modern, whitespace-driven frontend engineering portfolio built with HTML, CSS, and JavaScript",
-  "main": "index.html",
+  "name": "nora-rasuli-portfolio",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Portfolio of Nora Rasuli, a frontend and UI engineer building accessible products and AI interfaces.",
   "scripts": {
-    "generate": "node generate-projects.js",
-    "add-project": "node generate-projects.js add",
-    "remove-project": "node generate-projects.js remove",
-    "serve": "python3 -m http.server 8000",
-    "serve-python2": "python -m SimpleHTTPServer 8000"
+    "dev": "next dev",
+    "build": "next build",
+    "lint": "eslint . --max-warnings=0",
+    "typecheck": "tsc --noEmit",
+    "format:check": "prettier --check .",
+    "format": "prettier --write .",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "check:links": "node scripts/check-links.mjs",
+    "verify": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build && npm run check:links"
   },
-  "keywords": [
-    "portfolio",
-    "frontend",
-    "html",
-    "css",
-    "javascript",
-    "responsive",
-    "dark-mode"
-  ],
-  "author": "Your Name",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/yourusername/frontend-portfolio.git"
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
   },
-  "bugs": {
-    "url": "https://github.com/yourusername/frontend-portfolio/issues"
+  "devDependencies": {
+    "@axe-core/playwright": "latest",
+    "@eslint/eslintrc": "latest",
+    "@playwright/test": "latest",
+    "@testing-library/jest-dom": "latest",
+    "@testing-library/react": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "jsdom": "latest",
+    "prettier": "latest",
+    "serve": "latest",
+    "typescript": "latest",
+    "vitest": "latest"
   },
-  "homepage": "https://yourusername.github.io/frontend-portfolio"
+  "engines": {
+    "node": ">=20.9"
+  }
 }
