@@ -307,7 +307,8 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
 ];
-export const allWork: WorkStory[] = [...professionalWork, ...publicProjects];
+// Employer projects remain resume-only; the portfolio publishes personal work.
+export const allWork: WorkStory[] = [...publicProjects];
 export function getWorkBySlug(slug: string) {
   return allWork.find((item) => item.slug === slug);
 }

@@ -11,9 +11,9 @@ test("homepage communicates the portfolio story", async ({ page }) => {
   );
 });
 test("work and resume routes are usable", async ({ page }) => {
-  await page.goto("/work/knowledge-gap-discovery/");
+  await page.goto("/work/career-tracker/");
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "knowledge roadmap",
+    "Career Tracker",
   );
   await page.goto("/resume/");
   await expect(

@@ -9,7 +9,6 @@ export function SiteHeader() {
         </Link>
         <nav aria-label="Primary navigation">
           <Link href="/#work">Work</Link>
-          <Link href="/#experience">Experience</Link>
           <Link href="/#about">About</Link>
           <Link href="/resume/">Résumé</Link>
         </nav>
