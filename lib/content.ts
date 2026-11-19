@@ -46,9 +46,9 @@ export const publicProjects: PublicProject[] = [
   {
     slug: "disclosuretrace",
     eyebrow: "Personal project",
-    title: "DisclosureTrace",
+    title: "Disclosure Trace",
     summary:
-      "A source-linked workspace for reviewing how Item 1A wording changes between selected annual 10-K filings.",
+      "An on-demand SEC filing workspace that shows exactly how a company’s annual Risk Factors disclosure changed.",
     projectType: "Personal product",
     role: "Product design and full-stack product engineering",
     timeline: "One-week independent build · 2026",
@@ -56,17 +56,17 @@ export const publicProjects: PublicProject[] = [
     userStory:
       "As a reader reviewing a new annual filing, I need to see the exact wording that changed and return to both sources so that I can investigate without relying on an untraceable summary.",
     scenario:
-      "A new 10-K has been filed. The reader needs to compare its Risk Factors with the prior year, separate meaningful wording edits from movement and formatting noise, verify the original context, and capture follow-up questions.",
+      "A company has filed a new 10-K. The reader needs to retrieve the correct annual filings, isolate Item 1A, distinguish wording edits from document noise, verify the original context, and preserve follow-up questions.",
     demoPath: [
-      "Choose one of five annual filing pairs and review its source boundary.",
+      "Enter a public-company ticker to retrieve its latest two annual 10-Ks from SEC EDGAR.",
       "Filter to modified wording, move through the review queue, and inspect prior and current SEC context.",
       "Save a browser-local note, reload it, and export the comparison notes as Markdown.",
     ],
     decisions: [
       {
-        title: "Fixture-first instead of runtime SEC fetching",
+        title: "Live retrieval with a reliable fallback",
         detail:
-          "Versioned fixtures keep the public workflow reliable and inspectable while source retrieval remains an explicit maintenance operation with its own policy boundary.",
+          "The primary path resolves a ticker, discovers the latest two 10-Ks, and generates the comparison on demand. Saved verified examples keep the workflow available during SEC outages and make automated tests deterministic.",
       },
       {
         title: "Textual evidence instead of generated interpretation",
@@ -82,15 +82,15 @@ export const publicProjects: PublicProject[] = [
     context:
       "Comparing two long filings side by side makes it difficult to preserve exact wording, source context, review position, and follow-up notes.",
     challenge:
-      "Build a deterministic, source-linked document-review workflow that remains useful across dense text, partial data, keyboard interaction, mobile reflow, and request or storage failures.",
+      "Turn inconsistent public filing HTML into a trustworthy review workflow without hiding uncertainty, overloading the SEC, or converting textual changes into financial conclusions.",
     approach: [
-      "Defined typed contracts for filings, comparisons, provenance, exclusions, and versioned fixtures.",
-      "Built a deterministic block-alignment pipeline with stable identifiers and word-level change spans.",
-      "Separated URL-owned review state, async fixture state, transient interface state, and browser-local notes.",
-      "Tested parsing, alignment, storage, accessibility, recovery, and the production workflow across desktop and mobile.",
+      "Built a server-side pipeline for ticker resolution, filing discovery, SEC retrieval, Item 1A boundary validation, and deterministic alignment.",
+      "Defined typed contracts for filing metadata, provenance, exclusions, change spans, and API responses.",
+      "Separated URL-owned review state, asynchronous source state, transient interface state, and browser-local research notes.",
+      "Designed explicit loading, unavailable, partial, empty, retry, and local-storage failure paths, then tested the workflow across desktop and mobile.",
     ],
     outcome:
-      "Released a public Next.js product with five fixed filing pairs, 33 unit/component tests, 10 production-mode browser tests, explicit failure states, and a source-linked no-account workflow.",
+      "Shipped a public Next.js product that compares the latest compatible annual filings on demand, preserves direct SEC provenance, supports a no-account research workflow, and retains verified examples for resilience.",
     skills: [
       "Next.js",
       "React",
@@ -106,15 +106,15 @@ export const publicProjects: PublicProject[] = [
         kind: "public-artifact",
       },
       {
-        label: "Verified scope",
+        label: "Live product scope",
         detail:
-          "Five fixed Item 1A filing pairs with explicit partial-data boundaries.",
+          "Ticker lookup, latest-filing discovery, server-side SEC retrieval, Item 1A extraction, and source-linked comparison run on demand.",
         kind: "verified-scope",
       },
       {
         label: "Verified quality",
         detail:
-          "33 unit/component tests and 10 production-mode browser tests pass in CI.",
+          "CI verifies typed contracts, parsing, deterministic alignment, accessibility behavior, production builds, and desktop/mobile browser workflows.",
         kind: "verified-outcome",
       },
     ],

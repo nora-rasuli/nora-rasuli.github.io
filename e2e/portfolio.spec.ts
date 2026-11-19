@@ -16,7 +16,7 @@ test("homepage communicates the portfolio story", async ({ page }) => {
 test("work and resume routes are usable", async ({ page }) => {
   await page.goto("/work/disclosuretrace/");
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "DisclosureTrace",
+    "Disclosure Trace",
   );
   await expect(
     page.getByRole("link", { name: "Open live demo" }),
