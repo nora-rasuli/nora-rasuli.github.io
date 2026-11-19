@@ -44,6 +44,96 @@ export interface SkillGroup {
 
 export const publicProjects: PublicProject[] = [
   {
+    slug: "disclosuretrace",
+    eyebrow: "Personal project",
+    title: "DisclosureTrace",
+    summary:
+      "A source-linked workspace for reviewing how Item 1A wording changes between selected annual 10-K filings.",
+    projectType: "Personal product",
+    role: "Product design and full-stack product engineering",
+    timeline: "One-week independent build · 2026",
+    user: "A research-oriented reader comparing a company’s annual risk disclosures",
+    userStory:
+      "As a reader reviewing a new annual filing, I need to see the exact wording that changed and return to both sources so that I can investigate without relying on an untraceable summary.",
+    scenario:
+      "A new 10-K has been filed. The reader needs to compare its Risk Factors with the prior year, separate meaningful wording edits from movement and formatting noise, verify the original context, and capture follow-up questions.",
+    demoPath: [
+      "Choose one of five annual filing pairs and review its source boundary.",
+      "Filter to modified wording, move through the review queue, and inspect prior and current SEC context.",
+      "Save a browser-local note, reload it, and export the comparison notes as Markdown.",
+    ],
+    decisions: [
+      {
+        title: "Fixture-first instead of runtime SEC fetching",
+        detail:
+          "Versioned fixtures keep the public workflow reliable and inspectable while source retrieval remains an explicit maintenance operation with its own policy boundary.",
+      },
+      {
+        title: "Textual evidence instead of generated interpretation",
+        detail:
+          "The comparison classifies added, removed, and modified wording without turning those edits into unsupported judgments about materiality or investment significance.",
+      },
+      {
+        title: "Useful notes without an account system",
+        detail:
+          "Validated plain-text notes remain in the browser and export to Markdown, completing the research loop without storing personal research on a server.",
+      },
+    ],
+    context:
+      "Comparing two long filings side by side makes it difficult to preserve exact wording, source context, review position, and follow-up notes.",
+    challenge:
+      "Build a deterministic, source-linked document-review workflow that remains useful across dense text, partial data, keyboard interaction, mobile reflow, and request or storage failures.",
+    approach: [
+      "Defined typed contracts for filings, comparisons, provenance, exclusions, and versioned fixtures.",
+      "Built a deterministic block-alignment pipeline with stable identifiers and word-level change spans.",
+      "Separated URL-owned review state, async fixture state, transient interface state, and browser-local notes.",
+      "Tested parsing, alignment, storage, accessibility, recovery, and the production workflow across desktop and mobile.",
+    ],
+    outcome:
+      "Released a public Next.js product with five fixed filing pairs, 33 unit/component tests, 10 production-mode browser tests, explicit failure states, and a source-linked no-account workflow.",
+    skills: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Data pipelines",
+      "Accessibility",
+      "Playwright",
+    ],
+    evidence: [
+      {
+        label: "Public artifact",
+        detail: "The source repository and production application are public.",
+        kind: "public-artifact",
+      },
+      {
+        label: "Verified scope",
+        detail:
+          "Five fixed Item 1A filing pairs with explicit partial-data boundaries.",
+        kind: "verified-scope",
+      },
+      {
+        label: "Verified quality",
+        detail:
+          "33 unit/component tests and 10 production-mode browser tests pass in CI.",
+        kind: "verified-outcome",
+      },
+    ],
+    repository: "https://github.com/nora-rasuli/disclosuretrace",
+    status: "featured",
+    links: [
+      {
+        label: "Open demo",
+        href: "https://disclosuretrace.vercel.app",
+        kind: "demo",
+      },
+      {
+        label: "View source",
+        href: "https://github.com/nora-rasuli/disclosuretrace",
+        kind: "source",
+      },
+    ],
+  },
+  {
     slug: "career-tracker",
     eyebrow: "Personal project",
     title: "Career Tracker",
