@@ -39,6 +39,10 @@ test("Move Canvas case study is complete and usable", async ({ page }) => {
   await expect(
     page.getByText(/YouTube videos are visual references only/),
   ).toBeVisible();
+  await expect(page.getByText(/Arm hands-free calibration/)).toBeVisible();
+  await expect(
+    page.getByText(/explicitly enables an encrypted peer-to-peer live view/),
+  ).toBeVisible();
 
   const image = page.getByRole("img", {
     name: "Move Canvas mode selection for Motion Game, Dance Coach, and Tennis Coach",

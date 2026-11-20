@@ -54,27 +54,29 @@ export const publicProjects: PublicProject[] = [
     eyebrow: "Personal project",
     title: "Move Canvas",
     summary:
-      "A browser-based motion platform where phones become private camera controllers for multiplayer games, dance comparison, and tennis practice on a shared display.",
+      "A browser-based motion platform where phones become camera controllers for multiplayer games, focused movement practice, and an optional live player view on a shared display.",
     projectType: "Personal interactive product",
     role: "Product design and full-stack product engineering",
     timeline: "Independent product build · 2026",
     user: "A household or group that wants active, camera-based play without buying a console or dedicated motion sensor",
     userStory:
-      "As a player, I want to use the phone and display I already own for an active game or guided practice session so that setup is quick, multiple people can join, and my camera feed stays private.",
+      "As a player, I want to use the phone and display I already own for an active game or guided practice session so setup is quick, multiple people can join, and I control whether my live camera appears on the TV.",
     scenario:
-      "Friends want a shared motion game on the TV, while an individual player may want to compare a short dance sequence or practice a tennis movement. Each phone needs to join reliably, keep its camera data local, and synchronize only the minimum semantic state the shared experience needs.",
+      "Friends want a shared motion game on the TV, while an individual player may want to practice a dance, mobility sequence, or specific tennis movement. Each phone must join reliably, analyze movement locally, and share only the state—or explicitly consented live view—the TV needs.",
     demoPath: [
       "Choose Motion Game, Dance Coach, or Tennis Coach on the shared display.",
       "Open the controller link on one or more phones and join the private room with a high-entropy possession code.",
-      "For Dance or Tennis, choose a built-in reference, upload a clip for scored local comparison, or find a YouTube video to use as an unscored visual reference.",
-      "Calibrate locally, play or practice, then review team scores, player results, or bounded movement cues on the shared display.",
+      "Choose salsa, hip-hop, contemporary, yoga and mobility, or a forehand, backhand, serve, or volley practice focus.",
+      "Select a built-in reference, upload a clip for scored local comparison, or find a YouTube video to use as an unscored visual reference.",
+      "Arm hands-free calibration, step into frame, and optionally choose Show me on TV before practicing.",
+      "Play or practice, then review team scores, player results, or bounded movement cues on the shared display.",
       "Save a game to My Space, publish it intentionally, or discover, like, and collect games from the public library.",
     ],
     decisions: [
       {
-        title: "Send meaning, not camera media",
+        title: "Keep analysis local; make video sharing explicit",
         detail:
-          "Pose estimation and calibration stay on the originating device. Private realtime channels carry semantic events such as readiness, phase, score, and timing rather than raw frames, reference media, landmarks, or audio.",
+          "Pose estimation, calibration, raw landmarks, reference media, and audio stay on the originating device. Private realtime channels carry semantic state. If the player separately enables Show me on TV, an encrypted WebRTC stream goes directly to the paired display and is never stored.",
       },
       {
         title: "Make the display and phones one recoverable system",
@@ -87,6 +89,11 @@ export const publicProjects: PublicProject[] = [
           "Dance and tennis modes use deterministic, confidence-qualified 2D pose rules for built-in or uploaded clips. YouTube is kept to official search and playback because embedded video cannot be used as a dependable frame-analysis source.",
       },
       {
+        title: "Design calibration for the distance it requires",
+        detail:
+          "A single tap arms a five-second capture window. The player can step back, establish full-body framing, and hear or read confirmation while neutral stance and comfortable range capture automatically.",
+      },
+      {
         title: "Separate private creation from public sharing",
         detail:
           "Games remain private in My Space until the creator chooses Publish. Supabase row-level security protects ownership, while a server-side trigger maintains trustworthy like counts for the public library.",
@@ -95,21 +102,23 @@ export const publicProjects: PublicProject[] = [
     context:
       "Active games usually depend on a console, proprietary controllers, or a single small screen. Browser-capable TVs and phones already contain the display, camera, and networking needed for a lower-friction shared experience, but coordinating them safely creates real synchronization, privacy, and recovery problems.",
     challenge:
-      "Build a multi-device motion product that feels coherent across a shared display and several phones while keeping camera-derived data local, recovering from peer reloads and tracking loss, and separating playful feedback from unsupported coaching claims.",
+      "Build a multi-device motion product that feels coherent across a shared display and several phones, gives players direct control over live video sharing, recovers from peer reloads and tracking loss, and separates playful feedback from unsupported coaching claims.",
     approach: [
-      "Designed three connected modes around a shared room model: a generated collect-and-dodge Motion Game, reference-relative Dance Coach, and ordered shadow-serve or forehand Tennis Coach.",
+      "Designed three connected modes around a shared room model: a generated collect-and-dodge Motion Game, salsa/hip-hop/contemporary/mobility reference practice, and forehand/backhand/serve/volley shadow Tennis practice.",
       "Implemented anonymous authentication, private Supabase Realtime channels, exact-room authorization, named players, team and per-player scoring, and cross-room isolation.",
-      "Built local calibration, confidence-qualified pose comparison, bundled reference clips, uploaded-video analysis, official YouTube search/embed, deterministic timing and phase analysis, and explicit loading, error, empty, and recovery states.",
+      "Built countdown-based hands-free calibration, confidence-qualified pose comparison, bundled reference clips, uploaded-video analysis, official YouTube search/embed, deterministic timing and phase analysis, and explicit loading, error, empty, and recovery states.",
+      "Added a separately consented WebRTC player view so the TV can show the active person without uploading or persisting the stream; semantic practice still works if video connection fails.",
       "Added a creator library with private saves, intentional publishing, public discovery, likes, and Add to My Space, backed by scoped row-level security and server-owned like counts.",
       "Added strict boundary validation for stored and relayed data, keyboard and reduced-motion support, CI, security headers, deployment safeguards, and independent build, validation, audit, and live-review loops.",
     ],
     outcome:
-      "Shipped a public Next.js and TypeScript product with three motion modes, multi-player private rooms, local-first camera boundaries, reference-video workflows, reconnect recovery, and a production-backed creator and community game library.",
+      "Shipped a public Next.js and TypeScript product with three motion modes, multi-player private rooms, local-first movement analysis, optional peer-to-peer TV video, reference workflows, reconnect recovery, and a production-backed creator and community game library.",
     skills: [
       "Next.js",
       "React",
       "TypeScript",
       "Supabase Realtime",
+      "WebRTC",
       "Computer vision UX",
       "Playwright",
     ],
@@ -123,18 +132,18 @@ export const publicProjects: PublicProject[] = [
       {
         label: "Release quality",
         detail:
-          "CI passed formatting, linting, strict types, 42 unit and integration tests, a production build, dependency audit, and 11 Playwright scenarios for the released source. Live checks also confirmed the real database-backed empty state and eight YouTube search results without browser errors.",
+          "CI passed formatting, linting, strict types, 42 unit and integration tests, a production build, dependency audit, and 12 Playwright scenarios. Browser verification established a real peer-to-peer media stream, and live checks confirmed the practice libraries, consent controls, eight YouTube results, and zero recent production errors.",
         kind: "verified-outcome",
       },
       {
         label: "Verified scope",
         detail:
-          "Automated non-camera flows and privacy boundaries were verified. Physical phone/camera/TV performance, manual assistive-technology testing, coaching effectiveness, and measured latency were not established.",
+          "Automated multi-browser flows and privacy boundaries were verified. Nora's physical phone/TV combination, restrictive-network TURN requirements, manual assistive-technology testing, coaching effectiveness, and measured latency were not established.",
         kind: "verified-scope",
       },
     ],
     disclosure:
-      "Camera frames, raw landmarks, uploaded reference media, and audio are not relayed. YouTube videos are visual references only; scored comparison uses built-in or locally uploaded clips. Coaching modes provide bounded deterministic practice cues, not medical, injury-prevention, biomechanics, or professional instruction. The release has not been validated as a coaching-outcome study.",
+      "Raw landmarks, uploaded reference media, and audio are not relayed. Camera video reaches the paired display only after the player explicitly enables an encrypted peer-to-peer live view, and it is not stored. YouTube videos are visual references only; scored comparison uses built-in or locally uploaded clips. Coaching modes provide bounded deterministic practice cues, not medical, injury-prevention, biomechanics, or professional instruction. Physical TV compatibility and coaching outcomes have not been established.",
     image: {
       src: "/projects/move-canvas-modes.png",
       alt: "Move Canvas mode selection for Motion Game, Dance Coach, and Tennis Coach",

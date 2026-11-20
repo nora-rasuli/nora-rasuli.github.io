@@ -37,5 +37,9 @@ describe("portfolio content", () => {
     expect(publicProjects[0].disclosure).toContain(
       "YouTube videos are visual references only",
     );
+    expect(publicProjects[0].disclosure).toContain(
+      "explicitly enables an encrypted peer-to-peer live view",
+    );
+    expect(publicProjects[0].skills).toContain("WebRTC");
   });
 });
