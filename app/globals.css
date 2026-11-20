@@ -667,6 +667,24 @@ h3 {
 .work-card-copy {
   max-width: 780px;
 }
+.work-card-visual {
+  display: block;
+  width: min(100%, 540px);
+  margin-bottom: 1.6rem;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+.work-card-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 180ms ease;
+}
+.work-card-visual:hover img,
+.work-card-visual:focus-visible img {
+  transform: scale(1.012);
+}
 .work-card h3 {
   margin: 0.15rem 0 0.8rem;
   font:
@@ -702,6 +720,23 @@ h3 {
   color: var(--accent);
   font-size: 1.8rem;
   text-decoration: none;
+}
+.detail-visual {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 2.5rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+@media (prefers-reduced-motion: reduce) {
+  .work-card-visual img {
+    transition: none;
+  }
+  .work-card-visual:hover img,
+  .work-card-visual:focus-visible img {
+    transform: none;
+  }
 }
 .skill-grid {
   gap: 3rem;

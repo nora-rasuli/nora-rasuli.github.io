@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { WorkStory } from "@/lib/content";
 export function WorkCard({ item, index }: { item: WorkStory; index: number }) {
@@ -10,6 +11,21 @@ export function WorkCard({ item, index }: { item: WorkStory; index: number }) {
         {String(index + 1).padStart(2, "0")}
       </p>
       <div className="work-card-copy">
+        {item.image ? (
+          <Link
+            className="work-card-visual"
+            href={`/work/${item.slug}/`}
+            aria-label={`Read the ${item.title} case study`}
+          >
+            <Image
+              src={item.image.src}
+              alt={item.image.alt}
+              width={item.image.width}
+              height={item.image.height}
+              sizes="(max-width: 800px) 75vw, 520px"
+            />
+          </Link>
+        ) : null}
         <p className="eyebrow">{item.eyebrow}</p>
         <h3>
           <Link href={`/work/${item.slug}/`}>{item.title}</Link>

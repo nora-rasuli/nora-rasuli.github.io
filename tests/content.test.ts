@@ -19,4 +19,11 @@ describe("portfolio content", () => {
       true,
     );
   });
+  it("features StateChorus first with public product links", () => {
+    expect(publicProjects[0].slug).toBe("statechorus");
+    expect(
+      publicProjects[0].links?.find((link) => link.kind === "demo")?.href,
+    ).toContain("statechorus-eta.vercel.app");
+    expect(publicProjects[0].image?.alt).toContain("native verification");
+  });
 });

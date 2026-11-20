@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { allWork, getWorkBySlug } from "@/lib/content";
@@ -49,6 +50,17 @@ export default async function WorkPage({
             </a>
           )}
         </div>
+        {item.image ? (
+          <Image
+            className="detail-visual"
+            src={item.image.src}
+            alt={item.image.alt}
+            width={item.image.width}
+            height={item.image.height}
+            sizes="(max-width: 900px) 100vw, 1100px"
+            priority
+          />
+        ) : null}
         {item.disclosure && <p className="disclosure">{item.disclosure}</p>}
       </header>
       <div className="detail-layout">

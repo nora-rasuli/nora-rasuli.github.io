@@ -32,6 +32,12 @@ export interface WorkStory {
   demoPath?: string[];
   decisions?: { title: string; detail: string }[];
   disclosure?: string;
+  image?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
 }
 export interface PublicProject extends WorkStory {
   repository: string;
@@ -43,6 +49,105 @@ export interface SkillGroup {
 }
 
 export const publicProjects: PublicProject[] = [
+  {
+    slug: "statechorus",
+    eyebrow: "Personal project",
+    title: "StateChorus",
+    summary:
+      "A release-evidence workbench for replaying AI-interface state contracts and carrying browser-observable findings into native accessibility review.",
+    projectType: "Self-directed product concept",
+    role: "Product design and frontend engineering",
+    timeline: "One-week independent build · 2026",
+    user: "An accessibility QA engineer reviewing a shared AI interface before release",
+    userStory:
+      "As an accessibility QA engineer, I need to replay the full interaction lifecycle and preserve exact evidence so that regressions are actionable and unsupported conclusions still reach native review.",
+    scenario:
+      "A release changes streaming updates, a tool-approval prompt, and a stalled state. The reviewer needs to see which observable promise changed, what evidence supports the finding, and what remains outside browser-level authority.",
+    demoPath: [
+      "Run the deliberately broken synthetic fixture and approve its one-time tool request.",
+      "Inspect excessive live updates, a duplicate stall, and an unexpected focus change against the expected contract.",
+      "Replay the corrected fixture, confirm the local-pass/native-review boundary, and export the JSON or Markdown evidence.",
+    ],
+    decisions: [
+      {
+        title: "Observe the rendered interface",
+        detail:
+          "The provider queries DOM state, live-status revisions, focus, controls, and transcript content. It does not read fixture labels to manufacture an expected finding.",
+      },
+      {
+        title: "Keep local and native authority separate",
+        detail:
+          "A local pass ends with native verification required. Screen-reader output, disabled-user experience, and WCAG conformance are never inferred from DOM evidence.",
+      },
+      {
+        title: "Export lineage, not a verdict screenshot",
+        detail:
+          "Evidence includes contract, fixture, provider, browser, viewport, attempts, raw and normalized events, findings, and integrity hashes so another reviewer can trace the result.",
+      },
+    ],
+    context:
+      "AI turns move through submission, thinking, approval, streaming, stalls, retries, and completion. Static scans can inspect a final DOM, but they do not explain whether that stateful sequence kept its observable accessibility promises.",
+    challenge:
+      "Build a deterministic test harness that catches meaningful interaction regressions without presenting local automation as native assistive-technology evidence.",
+    approach: [
+      "Defined a typed twelve-state interaction contract and a seven-state executable demo with distinct invalid, interrupted, inconclusive, violation, and local-pass outcomes.",
+      "Rendered synthetic failures into the interface, captured them through a fixture-independent browser provider, and reduced raw observations into explainable episodes and invariants.",
+      "Built immutable JSON and Markdown evidence exports with provenance and integrity checks, then verified the complete flow across keyboard, responsive, reduced-motion, privacy, and failure-state paths.",
+      "Used independent verification loops to correct fixture-derived observations and a focus regression before publication.",
+    ],
+    outcome:
+      "Shipped a public React and TypeScript product that detects all seven seeded browser-observable failures in its fixed evaluation corpus, produces zero findings for the corrected control, and preserves an explicit route to qualified native review.",
+    skills: [
+      "React",
+      "TypeScript",
+      "Accessibility architecture",
+      "Playwright",
+      "Evidence provenance",
+      "Product design",
+    ],
+    evidence: [
+      {
+        label: "Measured synthetic corpus",
+        detail:
+          "Seven of seven seeded failures were detected across 24 Chromium attempts; the corrected control produced zero findings and each fixture retained one comparable hash across three runs.",
+        kind: "verified-outcome",
+      },
+      {
+        label: "Verified release gate",
+        detail:
+          "The dated local gate includes 25 Vitest checks, 24 rendered-browser corpus attempts, 15 Playwright checks, strict types, build, contrast, provenance, license, and claim checks.",
+        kind: "verified-outcome",
+      },
+      {
+        label: "Authority boundary",
+        detail:
+          "Results cover declared browser-observable behavior only; native assistive-technology and disabled-user testing were not performed.",
+        kind: "verified-scope",
+      },
+    ],
+    disclosure:
+      "Self-directed concept using bundled synthetic fixtures. It has no customer, adoption, revenue, or production-impact evidence, and local results do not establish WCAG conformance or native screen-reader behavior.",
+    image: {
+      src: "/projects/statechorus-fixed-result.png",
+      alt: "StateChorus review showing a corrected synthetic run with local checks passed and native verification required",
+      width: 1280,
+      height: 1000,
+    },
+    repository: "https://github.com/nora-rasuli/statechorus",
+    status: "featured",
+    links: [
+      {
+        label: "Open demo",
+        href: "https://statechorus-eta.vercel.app/demo?fixture=FIX-DEMO-BROKEN",
+        kind: "demo",
+      },
+      {
+        label: "View source",
+        href: "https://github.com/nora-rasuli/statechorus",
+        kind: "source",
+      },
+    ],
+  },
   {
     slug: "disclosuretrace",
     eyebrow: "Personal project",

@@ -11,17 +11,20 @@ test("homepage communicates the portfolio story", async ({ page }) => {
   );
   await expect(
     page.locator(".work-actions").getByRole("link", { name: "Live demo" }),
-  ).toHaveCount(4);
+  ).toHaveCount(5);
+  await expect(
+    page.getByRole("heading", { name: "StateChorus", level: 3 }),
+  ).toBeVisible();
 });
 test("work and resume routes are usable", async ({ page }) => {
-  await page.goto("/work/disclosuretrace/");
+  await page.goto("/work/statechorus/");
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "Disclosure Trace",
+    "StateChorus",
   );
   await expect(
     page.getByRole("link", { name: "Open live demo" }),
   ).toBeVisible();
-  await expect(page.getByText("As a reader reviewing")).toBeVisible();
+  await expect(page.getByText("As an accessibility QA engineer")).toBeVisible();
   await expect(
     page.getByRole("heading", { name: "The shortest path to value" }),
   ).toBeVisible();
