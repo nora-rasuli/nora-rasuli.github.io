@@ -125,6 +125,18 @@ export default async function WorkPage({
             <h2>What changed</h2>
             <p>{item.outcome}</p>
           </section>
+          <section>
+            <p className="eyebrow">Evidence</p>
+            <h2>What I verified</h2>
+            <ul className="verification-list">
+              {item.evidence.map((evidence) => (
+                <li key={evidence.label}>
+                  <h3>{evidence.label}</h3>
+                  <p>{evidence.detail}</p>
+                </li>
+              ))}
+            </ul>
+          </section>
           {item.confidentialityNote && (
             <aside className="confidentiality">
               <strong>About the visuals</strong>

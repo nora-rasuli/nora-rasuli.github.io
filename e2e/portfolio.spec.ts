@@ -28,6 +28,14 @@ test("work and resume routes are usable", async ({ page }) => {
   await expect(
     page.getByRole("heading", { name: "The shortest path to value" }),
   ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "What I verified" }),
+  ).toBeVisible();
+  await expect(page.getByText(/42 Vitest checks/)).toBeVisible();
+  await expect(
+    page.getByText(/24 rendered-browser corpus attempts/),
+  ).toBeVisible();
+  await expect(page.getByText(/19 Playwright checks/)).toBeVisible();
   await page.goto("/resume/");
   await expect(
     page.getByRole("link", { name: "Download PDF" }),

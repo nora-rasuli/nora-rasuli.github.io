@@ -507,6 +507,27 @@ h3 {
   margin-top: 0;
   letter-spacing: -0.02em;
 }
+.verification-list {
+  display: grid;
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+.verification-list li {
+  margin: 0;
+  padding: 1.4rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.verification-list h3 {
+  margin: 0 0 0.55rem;
+  color: var(--ink);
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+.verification-list p {
+  margin: 0;
+}
 .evidence-panel p {
   color: var(--muted);
 }
