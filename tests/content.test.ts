@@ -24,6 +24,6 @@ describe("portfolio content", () => {
     expect(
       publicProjects[0].links?.find((link) => link.kind === "demo")?.href,
     ).toContain("statechorus-eta.vercel.app");
-    expect(publicProjects[0].image?.alt).toContain("native verification");
+    expect(publicProjects[0].image?.alt).toContain("real-trace workflow");
   });
 });

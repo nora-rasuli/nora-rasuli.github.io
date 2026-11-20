@@ -54,35 +54,35 @@ export const publicProjects: PublicProject[] = [
     eyebrow: "Personal project",
     title: "StateChorus",
     summary:
-      "A release-evidence workbench for replaying AI-interface state contracts and carrying browser-observable findings into native accessibility review.",
-    projectType: "Self-directed product concept",
+      "A local-first release-evidence workbench that turns real AI-interface traces into explainable accessibility findings and review-ready evidence.",
+    projectType: "Personal developer tool",
     role: "Product design and frontend engineering",
     timeline: "One-week independent build · 2026",
     user: "An accessibility QA engineer reviewing a shared AI interface before release",
     userStory:
-      "As an accessibility QA engineer, I need to replay the full interaction lifecycle and preserve exact evidence so that regressions are actionable and unsupported conclusions still reach native review.",
+      "As an accessibility QA engineer, I need to capture a complete AI interaction, see exactly which observable promise changed, and preserve the evidence so that regressions are actionable and native review starts with useful context.",
     scenario:
       "A release changes streaming updates, a tool-approval prompt, and a stalled state. The reviewer needs to see which observable promise changed, what evidence supports the finding, and what remains outside browser-level authority.",
     demoPath: [
-      "Run the deliberately broken synthetic fixture and approve its one-time tool request.",
-      "Inspect excessive live updates, a duplicate stall, and an unexpected focus change against the expected contract.",
-      "Replay the corrected fixture, confirm the local-pass/native-review boundary, and export the JSON or Markdown evidence.",
+      "Download the Playwright capture helper, instrument a local or staging interface, and exercise one complete AI turn.",
+      "Import the generated JSON trace to evaluate state order, focus, approval controls, transcript behavior, and live-status signals locally in the browser.",
+      "Inspect expected versus observed evidence, then export a provenance-aware JSON or Markdown record for native assistive-technology review.",
     ],
     decisions: [
       {
-        title: "Observe the rendered interface",
+        title: "Capture the product teams already test",
         detail:
-          "The provider queries DOM state, live-status revisions, focus, controls, and transcript content. It does not read fixture labels to manufacture an expected finding.",
+          "A small Playwright adapter records declared browser-observable signals from a local or staging interface. StateChorus imports that trace instead of crawling arbitrary URLs or requiring production credentials.",
       },
       {
-        title: "Keep local and native authority separate",
+        title: "Keep analysis local and fail closed",
         detail:
-          "A local pass ends with native verification required. Screen-reader output, disabled-user experience, and WCAG conformance are never inferred from DOM evidence.",
+          "The static app validates the complete semantic trajectory in browser memory. Malformed or incomplete traces produce visible recovery states and are never replaced with a sample result.",
       },
       {
-        title: "Export lineage, not a verdict screenshot",
+        title: "Export lineage, then preserve the authority boundary",
         detail:
-          "Evidence includes contract, fixture, provider, browser, viewport, attempts, raw and normalized events, findings, and integrity hashes so another reviewer can trace the result.",
+          "Evidence retains input identity, capture and analysis environments, events, findings, and integrity hashes. Even a local pass ends with native verification required; DOM evidence never becomes a screen-reader or WCAG verdict.",
       },
     ],
     context:
@@ -90,13 +90,13 @@ export const publicProjects: PublicProject[] = [
     challenge:
       "Build a deterministic test harness that catches meaningful interaction regressions without presenting local automation as native assistive-technology evidence.",
     approach: [
-      "Defined a typed twelve-state interaction contract and a seven-state executable demo with distinct invalid, interrupted, inconclusive, violation, and local-pass outcomes.",
-      "Rendered synthetic failures into the interface, captured them through a fixture-independent browser provider, and reduced raw observations into explainable episodes and invariants.",
-      "Built immutable JSON and Markdown evidence exports with provenance and integrity checks, then verified the complete flow across keyboard, responsive, reduced-motion, privacy, and failure-state paths.",
-      "Used independent verification loops to correct fixture-derived observations and a focus regression before publication.",
+      "Defined a typed twelve-state contract plus a strict 1.1 trace schema that requires the complete ordered interaction trajectory and state-consistent semantic signals.",
+      "Separated capture from analysis: the downloadable helper records a user-controlled interface, while pure local modules normalize observations, reduce semantic episodes, and evaluate invariants.",
+      "Built JSON and Markdown exports with trace-native identity, separate capture and analysis environments, reproducible hashes, and no fixture lineage for user-supplied input.",
+      "Kept an optional broken/fixed sample for orientation, then used independent verification loops to harden real-input validation, keyboard focus, evidence immutability, privacy, and failure recovery.",
     ],
     outcome:
-      "Shipped a public React and TypeScript product that detects all seven seeded browser-observable failures in its fixed evaluation corpus, produces zero findings for the corrected control, and preserves an explicit route to qualified native review.",
+      "Shipped a public React and TypeScript tool that accepts real Playwright traces, rejects incoherent evidence, exports reviewable records, and preserves an explicit route from local browser findings to qualified native review.",
     skills: [
       "React",
       "TypeScript",
@@ -107,15 +107,15 @@ export const publicProjects: PublicProject[] = [
     ],
     evidence: [
       {
-        label: "Measured synthetic corpus",
+        label: "Functional user-input path",
         detail:
-          "Seven of seven seeded failures were detected across 24 Chromium attempts; the corrected control produced zero findings and each fixture retained one comparable hash across three runs.",
+          "A fresh non-corpus trace was captured in one browser context, imported in another, evaluated locally, and exported as JSON and Markdown with trace-native provenance.",
         kind: "verified-outcome",
       },
       {
         label: "Verified release gate",
         detail:
-          "The dated local gate includes 25 Vitest checks, 24 rendered-browser corpus attempts, 15 Playwright checks, strict types, build, contrast, provenance, license, and claim checks.",
+          "The dated 1.1 gate includes 42 Vitest checks, 24 rendered-browser corpus attempts, 19 Playwright checks, strict types, build, contrast, provenance, license, and claim checks.",
         kind: "verified-outcome",
       },
       {
@@ -126,19 +126,19 @@ export const publicProjects: PublicProject[] = [
       },
     ],
     disclosure:
-      "Self-directed concept using bundled synthetic fixtures. It has no customer, adoption, revenue, or production-impact evidence, and local results do not establish WCAG conformance or native screen-reader behavior.",
+      "The bundled broken/fixed scenario is optional sample data. User-supplied traces are analyzed locally and are not uploaded by the static app. Browser-level results do not establish WCAG conformance, native screen-reader behavior, or disabled-user experience.",
     image: {
-      src: "/projects/statechorus-fixed-result.png",
-      alt: "StateChorus review showing a corrected synthetic run with local checks passed and native verification required",
+      src: "/projects/statechorus-setup-overview.png",
+      alt: "StateChorus real-trace workflow with capture helper, local JSON import, and optional sample",
       width: 1280,
-      height: 1000,
+      height: 1250,
     },
     repository: "https://github.com/nora-rasuli/statechorus",
     status: "featured",
     links: [
       {
         label: "Open demo",
-        href: "https://statechorus-eta.vercel.app/demo?fixture=FIX-DEMO-BROKEN",
+        href: "https://statechorus-eta.vercel.app/",
         kind: "demo",
       },
       {
