@@ -19,11 +19,17 @@ describe("portfolio content", () => {
       true,
     );
   });
-  it("features StateChorus first with public product links", () => {
-    expect(publicProjects[0].slug).toBe("statechorus");
+  it("features Move Canvas first with verified public product links", () => {
+    expect(publicProjects[0].slug).toBe("move-canvas");
     expect(
       publicProjects[0].links?.find((link) => link.kind === "demo")?.href,
-    ).toContain("statechorus-eta.vercel.app");
-    expect(publicProjects[0].image?.alt).toContain("real-trace workflow");
+    ).toBe("https://move-canvas.vercel.app");
+    expect(publicProjects[0].repository).toBe(
+      "https://github.com/nora-rasuli/move-canvas",
+    );
+    expect(publicProjects[0].image?.alt).toContain("Motion Game");
+    expect(publicProjects[0].disclosure).toContain(
+      "not medical, injury-prevention, biomechanics, or professional instruction",
+    );
   });
 });

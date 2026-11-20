@@ -50,6 +50,105 @@ export interface SkillGroup {
 
 export const publicProjects: PublicProject[] = [
   {
+    slug: "move-canvas",
+    eyebrow: "Personal project",
+    title: "Move Canvas",
+    summary:
+      "A browser-based motion playground that pairs phones with a shared display for multiplayer games, dance comparison, and tennis practice.",
+    projectType: "Personal interactive product",
+    role: "Product design and full-stack product engineering",
+    timeline: "Independent product build · 2026",
+    user: "A household or group that wants active, camera-based play without buying a console or dedicated motion sensor",
+    userStory:
+      "As a player, I want to use the phone and display I already own for an active game or guided practice session so that setup is quick, multiple people can join, and my camera feed stays private.",
+    scenario:
+      "Friends want a shared motion game on the TV, while an individual player may want to compare a short dance sequence or practice a tennis movement. Each phone needs to join reliably, keep its camera data local, and synchronize only the minimum semantic state the shared experience needs.",
+    demoPath: [
+      "Choose Motion Game, Dance Coach, or Tennis Coach on the shared display.",
+      "Open the controller link on one or more phones and join the private room with a high-entropy possession code.",
+      "Calibrate locally, play or practice, then review team scores, player results, or bounded movement cues on the shared display.",
+    ],
+    decisions: [
+      {
+        title: "Send meaning, not camera media",
+        detail:
+          "Pose estimation and calibration stay on the originating device. Private realtime channels carry semantic events such as readiness, phase, score, and timing rather than raw frames, reference media, landmarks, or audio.",
+      },
+      {
+        title: "Make the display and phones one recoverable system",
+        detail:
+          "An authoritative session clock, explicit state machine, and re-handshake protocol let either peer pause or stop safely and let a reloaded display restore ready, paused, or running state without resetting the session.",
+      },
+      {
+        title: "Keep coaching useful and honestly bounded",
+        detail:
+          "Dance and tennis modes use deterministic, confidence-qualified 2D pose rules. The interface explains uncertainty and avoids medical, biomechanics, professional-coaching, ball-flight, or racket-analysis claims.",
+      },
+    ],
+    context:
+      "Active games usually depend on a console, proprietary controllers, or a single small screen. Browser-capable TVs and phones already contain the display, camera, and networking needed for a lower-friction shared experience, but coordinating them safely creates real synchronization, privacy, and recovery problems.",
+    challenge:
+      "Build a multi-device motion product that feels coherent across a shared display and several phones while keeping camera-derived data local, recovering from peer reloads and tracking loss, and separating playful feedback from unsupported coaching claims.",
+    approach: [
+      "Designed three connected modes around a shared room model: a generated collect-and-dodge Motion Game, reference-relative Dance Coach, and ordered shadow-serve or forehand Tennis Coach.",
+      "Implemented anonymous authentication, private Supabase Realtime channels, exact-room authorization, named players, team and per-player scoring, and cross-room isolation.",
+      "Built local calibration, confidence-qualified pose comparison, deterministic timing and phase analysis, explicit loading/error/recovery states, keyboard controls, and reduced-motion-aware responsive interfaces.",
+      "Added strict boundary validation for stored and relayed data, CI, security headers, deployment safeguards, and independent build, validation, audit, Preview, and Production verification loops.",
+    ],
+    outcome:
+      "Shipped a public Next.js and TypeScript product with three complete motion modes, multi-player private rooms, local-first camera boundaries, reconnect recovery, and a verified production release.",
+    skills: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Supabase Realtime",
+      "Computer vision UX",
+      "Playwright",
+    ],
+    evidence: [
+      {
+        label: "Production workflow",
+        detail:
+          "Fresh-session verification completed all 10 browser scenarios against Production, including multi-client synchronization, room isolation, reload recovery, malformed-data handling, keyboard operation, and automated accessibility checks.",
+        kind: "verified-outcome",
+      },
+      {
+        label: "Release quality",
+        detail:
+          "CI passed formatting, linting, strict types, 32 unit and integration tests, a production build, dependency audit, and 10 Playwright scenarios; deployment-scoped runtime and HTTP 5xx queries were empty after verification.",
+        kind: "verified-outcome",
+      },
+      {
+        label: "Verified scope",
+        detail:
+          "Automated non-camera flows and privacy boundaries were verified. Physical phone/camera/TV performance, manual assistive-technology testing, coaching effectiveness, and measured latency were not established.",
+        kind: "verified-scope",
+      },
+    ],
+    disclosure:
+      "Camera frames, raw landmarks, reference media, and audio are not relayed. Coaching modes provide bounded deterministic practice cues, not medical, injury-prevention, biomechanics, or professional instruction. The published release has not been validated as a physical-device performance or coaching-outcome study.",
+    image: {
+      src: "/projects/move-canvas-modes.png",
+      alt: "Move Canvas mode selection for Motion Game, Dance Coach, and Tennis Coach",
+      width: 1280,
+      height: 1111,
+    },
+    repository: "https://github.com/nora-rasuli/move-canvas",
+    status: "featured",
+    links: [
+      {
+        label: "Open demo",
+        href: "https://move-canvas.vercel.app",
+        kind: "demo",
+      },
+      {
+        label: "View source",
+        href: "https://github.com/nora-rasuli/move-canvas",
+        kind: "source",
+      },
+    ],
+  },
+  {
     slug: "statechorus",
     eyebrow: "Personal project",
     title: "StateChorus",
