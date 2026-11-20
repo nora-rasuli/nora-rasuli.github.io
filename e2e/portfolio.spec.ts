@@ -35,6 +35,10 @@ test("Move Canvas case study is complete and usable", async ({ page }) => {
   await expect(
     page.getByText(/not medical, injury-prevention, biomechanics/),
   ).toBeVisible();
+  await expect(page.getByText(/Save a game to My Space/)).toBeVisible();
+  await expect(
+    page.getByText(/YouTube videos are visual references only/),
+  ).toBeVisible();
 
   const image = page.getByRole("img", {
     name: "Move Canvas mode selection for Motion Game, Dance Coach, and Tennis Coach",

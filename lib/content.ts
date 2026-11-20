@@ -54,7 +54,7 @@ export const publicProjects: PublicProject[] = [
     eyebrow: "Personal project",
     title: "Move Canvas",
     summary:
-      "A browser-based motion playground that pairs phones with a shared display for multiplayer games, dance comparison, and tennis practice.",
+      "A browser-based motion platform where phones become private camera controllers for multiplayer games, dance comparison, and tennis practice on a shared display.",
     projectType: "Personal interactive product",
     role: "Product design and full-stack product engineering",
     timeline: "Independent product build · 2026",
@@ -66,7 +66,9 @@ export const publicProjects: PublicProject[] = [
     demoPath: [
       "Choose Motion Game, Dance Coach, or Tennis Coach on the shared display.",
       "Open the controller link on one or more phones and join the private room with a high-entropy possession code.",
+      "For Dance or Tennis, choose a built-in reference, upload a clip for scored local comparison, or find a YouTube video to use as an unscored visual reference.",
       "Calibrate locally, play or practice, then review team scores, player results, or bounded movement cues on the shared display.",
+      "Save a game to My Space, publish it intentionally, or discover, like, and collect games from the public library.",
     ],
     decisions: [
       {
@@ -82,7 +84,12 @@ export const publicProjects: PublicProject[] = [
       {
         title: "Keep coaching useful and honestly bounded",
         detail:
-          "Dance and tennis modes use deterministic, confidence-qualified 2D pose rules. The interface explains uncertainty and avoids medical, biomechanics, professional-coaching, ball-flight, or racket-analysis claims.",
+          "Dance and tennis modes use deterministic, confidence-qualified 2D pose rules for built-in or uploaded clips. YouTube is kept to official search and playback because embedded video cannot be used as a dependable frame-analysis source.",
+      },
+      {
+        title: "Separate private creation from public sharing",
+        detail:
+          "Games remain private in My Space until the creator chooses Publish. Supabase row-level security protects ownership, while a server-side trigger maintains trustworthy like counts for the public library.",
       },
     ],
     context:
@@ -92,11 +99,12 @@ export const publicProjects: PublicProject[] = [
     approach: [
       "Designed three connected modes around a shared room model: a generated collect-and-dodge Motion Game, reference-relative Dance Coach, and ordered shadow-serve or forehand Tennis Coach.",
       "Implemented anonymous authentication, private Supabase Realtime channels, exact-room authorization, named players, team and per-player scoring, and cross-room isolation.",
-      "Built local calibration, confidence-qualified pose comparison, deterministic timing and phase analysis, explicit loading/error/recovery states, keyboard controls, and reduced-motion-aware responsive interfaces.",
-      "Added strict boundary validation for stored and relayed data, CI, security headers, deployment safeguards, and independent build, validation, audit, Preview, and Production verification loops.",
+      "Built local calibration, confidence-qualified pose comparison, bundled reference clips, uploaded-video analysis, official YouTube search/embed, deterministic timing and phase analysis, and explicit loading, error, empty, and recovery states.",
+      "Added a creator library with private saves, intentional publishing, public discovery, likes, and Add to My Space, backed by scoped row-level security and server-owned like counts.",
+      "Added strict boundary validation for stored and relayed data, keyboard and reduced-motion support, CI, security headers, deployment safeguards, and independent build, validation, audit, and live-review loops.",
     ],
     outcome:
-      "Shipped a public Next.js and TypeScript product with three complete motion modes, multi-player private rooms, local-first camera boundaries, reconnect recovery, and a verified production release.",
+      "Shipped a public Next.js and TypeScript product with three motion modes, multi-player private rooms, local-first camera boundaries, reference-video workflows, reconnect recovery, and a production-backed creator and community game library.",
     skills: [
       "Next.js",
       "React",
@@ -109,13 +117,13 @@ export const publicProjects: PublicProject[] = [
       {
         label: "Production workflow",
         detail:
-          "Fresh-session verification completed all 10 browser scenarios against Production, including multi-client synchronization, room isolation, reload recovery, malformed-data handling, keyboard operation, and automated accessibility checks.",
+          "Fresh-session verification covered multi-client synchronization, room isolation, reload recovery, private saves, intentional publishing, likes, collection, YouTube search, malformed-data handling, keyboard operation, and automated accessibility checks.",
         kind: "verified-outcome",
       },
       {
         label: "Release quality",
         detail:
-          "CI passed formatting, linting, strict types, 32 unit and integration tests, a production build, dependency audit, and 10 Playwright scenarios; deployment-scoped runtime and HTTP 5xx queries were empty after verification.",
+          "CI passed formatting, linting, strict types, 42 unit and integration tests, a production build, dependency audit, and 11 Playwright scenarios for the released source. Live checks also confirmed the real database-backed empty state and eight YouTube search results without browser errors.",
         kind: "verified-outcome",
       },
       {
@@ -126,7 +134,7 @@ export const publicProjects: PublicProject[] = [
       },
     ],
     disclosure:
-      "Camera frames, raw landmarks, reference media, and audio are not relayed. Coaching modes provide bounded deterministic practice cues, not medical, injury-prevention, biomechanics, or professional instruction. The published release has not been validated as a physical-device performance or coaching-outcome study.",
+      "Camera frames, raw landmarks, uploaded reference media, and audio are not relayed. YouTube videos are visual references only; scored comparison uses built-in or locally uploaded clips. Coaching modes provide bounded deterministic practice cues, not medical, injury-prevention, biomechanics, or professional instruction. The release has not been validated as a coaching-outcome study.",
     image: {
       src: "/projects/move-canvas-modes.png",
       alt: "Move Canvas mode selection for Motion Game, Dance Coach, and Tennis Coach",

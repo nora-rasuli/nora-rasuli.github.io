@@ -31,5 +31,11 @@ describe("portfolio content", () => {
     expect(publicProjects[0].disclosure).toContain(
       "not medical, injury-prevention, biomechanics, or professional instruction",
     );
+    expect(publicProjects[0].demoPath).toContain(
+      "Save a game to My Space, publish it intentionally, or discover, like, and collect games from the public library.",
+    );
+    expect(publicProjects[0].disclosure).toContain(
+      "YouTube videos are visual references only",
+    );
   });
 });
